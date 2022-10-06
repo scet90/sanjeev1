@@ -7,7 +7,8 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
+    "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
+    "web": "webpack serve --mode=development --config webpack.config.js --port 9097"
   },
   "dependencies": {
     "react": "18.1.0",
