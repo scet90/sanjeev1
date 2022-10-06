@@ -1,21 +1,31 @@
-import React from 'react';
-import {Text, View, StyleSheet} from 'react-native';
+import React, {useState} from 'react';
+import {Text, View, StyleSheet, Button} from 'react-native';
 // import Hello from './component/Hello';
 // import Greet from './Greet';
+
+type Person = {
+  name: string;
+  age: number;
+};
+
 const App = () => {
+  const [name, setName] = useState<string>('Sanjeev');
+  const [person, setPerson] = useState<Person>({name: 'Harshit', age: 7});
+
+  const clickHandler = () => {
+    setName('Harshit');
+    setPerson({...person, name: 'Kanha', age: 8.8});
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Text style={styles.boldText}>Sanjeev</Text>
-      </View>
-      <View style={styles.body}>
-        <Text style={styles.boldText}>
-          Hello <Text style={styles.italicText}>Sanjeev</Text>
-        </Text>
-        <Text>Hello Deepanshi</Text>
-        <Text>Hello Tanishka</Text>
-        <Text>Hello Harshit</Text>
-      </View>
+      <Text>My name is {name}</Text>
+      <Text>
+        His name is {person.name} and his age is {person.age}
+      </Text>
+      <view style={styles.buttonContainer}>
+        <Button title="Update state" onPress={clickHandler} />
+      </view>
     </View>
   );
 };
@@ -27,19 +37,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  header: {
-    backgroundColor: 'pink',
-    padding: 20,
-  },
-  boldText: {
-    fontWeight: 'bold',
-  },
-  italicText: {
-    fontStyle: 'italic',
-  },
-  body: {
-    backgroundColor: 'yellow',
-    padding: 20,
+  buttonContainer: {
+    marginTop: 20,
   },
 });
 
