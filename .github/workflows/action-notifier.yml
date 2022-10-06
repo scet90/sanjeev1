@@ -1,22 +1,21 @@
-name: Notifier
+name: ActionNotifier
 
-on:
-  push:
-    branches: [master]
-  pull_request:
-    branches: [master]
-
+on: [push]
 jobs:
-  messageWhatsApp:
+  build:
     runs-on: ubuntu-latest
     environment: dev
     steps:
       - uses: actions/checkout@master
-      - name: Notification WhatsApp
+      - name: whatsapp-notify
         id: whatsapp-notify
         env:
           account_sid: ${{ secrets.twilio_account_sid }}
           auth_token: ${{ secrets.twilio_auth_token }}
           to_whatsapp_no: ${{ secrets.twilio_to_whatsapp_no }}
-          message: '👉🏻 PR Raised 👉🏻 A PR raised to Master branch'
-        uses: khaled-ibtikar/whatsapp-push-notify-action@master
+
+        uses: atifazeez77/whatsapp-push-notify-action@master
+
+      - name: Run
+        run: |
+          echo 'Start!'
