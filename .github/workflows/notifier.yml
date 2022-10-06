@@ -10,6 +10,7 @@ jobs:
 
   messageWhatsApp:
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - uses: actions/checkout@master
       - name: Notification WhatsApp
