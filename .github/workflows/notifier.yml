@@ -2,12 +2,11 @@ name: Notifier
 
 on:
   push:
-    branches: [ master ]
+    branches: [master]
   pull_request:
-    branches: [ master ]
+    branches: [master]
 
 jobs:
-
   messageWhatsApp:
     runs-on: ubuntu-latest
     environment: dev
@@ -19,5 +18,5 @@ jobs:
           account_sid: ${{ secrets.twilio_account_sid }}
           auth_token: ${{ secrets.twilio_auth_token }}
           to_whatsapp_no: ${{ secrets.twilio_to_whatsapp_no }}
-          message: "CI 👉🏻 Your message here"
+          message: '👉🏻 PR Raised 👉🏻 \n A PR raised to Master branch \n Please review \n Thanks, \n Sanjeev Kumar'
         uses: khaled-ibtikar/whatsapp-push-notify-action@master
